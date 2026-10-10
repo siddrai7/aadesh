@@ -1708,6 +1708,8 @@ textarea {
   border-radius: var(--radius);
   position: relative;
   overflow: hidden;
+  /* clip (not hidden) so scrollIntoView can't scroll the card sideways */
+  overflow: clip;
 }
 
 .form-card::before {
@@ -2348,4 +2350,19 @@ fieldset.field {
 .mobile-menu .btn--ghost {
   --btn-bg: transparent;
   --btn-fg: var(--paper);
+}
+
+/* Primary form action uses WhatsApp green so the hand-off is obvious */
+.form-card .btn--wa {
+  --btn-bg: #25d366;
+  --btn-fg: #0b2e17;
+}
+
+.form-success .lede strong {
+  color: var(--paper);
+  font-weight: 500;
+}
+
+.form-card .lede {
+  color: var(--on-dark-soft);
 }

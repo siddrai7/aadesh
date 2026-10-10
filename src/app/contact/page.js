@@ -26,8 +26,8 @@ export default function Contact() {
           <div className="page-hero__foot">
             <span className="label reveal">(Say hello)</span>
             <p className="lede reveal" style={{ "--d": "0.2s" }}>
-              Motivational sessions, sales coaching or a workshop for your team — share a few details and you’ll hear back
-              personally within 24–48 hours.
+              Motivational sessions, sales coaching or a workshop for your team. Fill in a few details and send them
+              straight to Aadesh on WhatsApp.
             </p>
           </div>
         </div>

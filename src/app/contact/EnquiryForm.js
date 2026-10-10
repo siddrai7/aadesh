@@ -1,16 +1,17 @@
 "use client";
 
-import { useActionState, useState, useSyncExternalStore } from "react";
+import { startTransition, useActionState, useState, useSyncExternalStore } from "react";
 import { submitEnquiry } from "./actions";
-import { ArrowRight, Check } from "@/components/Icons";
+import { Check, WhatsApp } from "@/components/Icons";
 import { whatsappLink } from "@/lib/site";
-
-const interests = [
-  { value: "speaking", label: "Motivational session" },
-  { value: "coaching", label: "Sales coaching" },
-  { value: "workshops", label: "Team workshop" },
-  { value: "other", label: "Something else" },
-];
+import {
+  audienceOptions,
+  enquiryWhatsAppLink,
+  formatOptions,
+  interestOptions as interests,
+  readEnquiry,
+  validateEnquiry,
+} from "@/lib/enquiry";
 
 const initialState = { status: "idle" };
 
@@ -38,24 +39,51 @@ export default function EnquiryForm() {
   const service = useSyncExternalStore(noop, getService, () => null);
   const fromUrl = interests.some((i) => i.value === service) ? service : null;
   const interest = picked ?? fromUrl ?? "speaking";
+  const [clientErrors, setClientErrors] = useState(null);
 
-  const e = state.errors || {};
+  const e = clientErrors || state.errors || {};
   const v = state.values || {};
+
+  // Opens WhatsApp inside the tap itself (browsers block it after an await),
+  // then records the enquiry on the server in the background.
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const values = readEnquiry(formData);
+    const errors = validateEnquiry(values);
+    setClientErrors(errors);
+
+    const firstInvalid = Object.keys(errors)[0];
+    if (firstInvalid) {
+      document.getElementById(firstInvalid)?.focus();
+      return;
+    }
+
+    if (!formData.get("company_website")) {
+      window.open(enquiryWhatsAppLink(values), "_blank", "noopener");
+    }
+    startTransition(() => formAction(formData));
+  }
 
   if (state.status === "success") {
     return (
-      <div className="form-success" role="status">
+      <div
+        className="form-success"
+        role="status"
+        // The form collapses into this message; bring it back into view.
+        ref={(el) => el?.scrollIntoView({ block: "center", behavior: "smooth" })}
+      >
         <span className="form-success__icon">
           <Check />
         </span>
-        <h3 className="h3">Thank you{state.name ? `, ${state.name}` : ""}.</h3>
+        <h3 className="h3">Almost done{state.name ? `, ${state.name}` : ""}.</h3>
         <p className="lede">
-          Your enquiry is in. Expect a personal reply within 24–48 hours. For anything urgent, a WhatsApp message is the
-          quickest way to reach us.
+          WhatsApp has opened with your enquiry already written. Just tap <strong>Send</strong> and Aadesh will reply
+          personally on WhatsApp.
         </p>
         <div>
-          <a href={whatsappLink()} target="_blank" rel="noreferrer" className="btn">
-            Message on WhatsApp <ArrowRight />
+          <a href={state.waLink || whatsappLink()} target="_blank" rel="noreferrer" className="btn">
+            <WhatsApp /> Didn’t open? Tap here
           </a>
         </div>
       </div>
@@ -65,7 +93,7 @@ export default function EnquiryForm() {
   const err = (name) => (e[name] ? { "aria-invalid": true, "aria-describedby": `${name}-error` } : {});
 
   return (
-    <form action={formAction} className="form" noValidate>
+    <form action={formAction} onSubmit={handleSubmit} className="form" noValidate>
       <fieldset className="field field--full" data-invalid={e.interest ? "true" : undefined}>
         <legend>I’d like to enquire about</legend>
         <div className="chips">
@@ -89,8 +117,8 @@ export default function EnquiryForm() {
         <input id="name" name="name" autoComplete="name" autoCapitalize="words" enterKeyHint="next" placeholder="Full name" defaultValue={v.name} required {...err("name")} />
       </Field>
 
-      <Field name="email" label="Email *" error={e.email}>
-        <input id="email" name="email" type="email" inputMode="email" autoCapitalize="off" autoCorrect="off" spellCheck={false} enterKeyHint="next" autoComplete="email" placeholder="you@company.com" defaultValue={v.email} required {...err("email")} />
+      <Field name="email" label="Email" error={e.email}>
+        <input id="email" name="email" type="email" inputMode="email" autoCapitalize="off" autoCorrect="off" spellCheck={false} enterKeyHint="next" autoComplete="email" placeholder="you@company.com" defaultValue={v.email} {...err("email")} />
       </Field>
 
       <Field name="phone" label="Phone / WhatsApp" error={e.phone}>
@@ -104,20 +132,18 @@ export default function EnquiryForm() {
       <Field name="audience" label="Audience size">
         <select id="audience" name="audience" defaultValue={v.audience || ""}>
           <option value="">Select</option>
-          <option value="1">Just me (1:1)</option>
-          <option value="2-25">2 – 25</option>
-          <option value="26-100">26 – 100</option>
-          <option value="101-500">101 – 500</option>
-          <option value="500+">500+</option>
+          {audienceOptions.map((o) => (
+            <option key={o.value} value={o.value}>{o.label}</option>
+          ))}
         </select>
       </Field>
 
       <Field name="format" label="Format">
         <select id="format" name="format" defaultValue={v.format || ""}>
           <option value="">Select</option>
-          <option value="in-person">In person</option>
-          <option value="online">Online</option>
-          <option value="not-sure">Not sure yet</option>
+          {formatOptions.map((o) => (
+            <option key={o.value} value={o.value}>{o.label}</option>
+          ))}
         </select>
       </Field>
 
@@ -144,14 +170,10 @@ export default function EnquiryForm() {
 
       <div className="form__foot">
         <p className="form__note">
-          Prefer to chat?{" "}
-          <a href={whatsappLink()} target="_blank" rel="noreferrer">
-            Message on WhatsApp
-          </a>{" "}
-          — replies are usually same day.
+          This opens WhatsApp with your details filled in. Just tap Send, and replies usually come the same day.
         </p>
-        <button type="submit" className="btn" disabled={pending}>
-          {pending ? "Sending…" : "Send enquiry"} <ArrowRight />
+        <button type="submit" className="btn btn--wa" disabled={pending}>
+          <WhatsApp /> {pending ? "Opening…" : "Send on WhatsApp"}
         </button>
       </div>
     </form>
