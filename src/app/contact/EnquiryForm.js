@@ -86,19 +86,19 @@ export default function EnquiryForm() {
       </fieldset>
 
       <Field name="name" label="Your name *" error={e.name}>
-        <input id="name" name="name" autoComplete="name" placeholder="Full name" defaultValue={v.name} required {...err("name")} />
+        <input id="name" name="name" autoComplete="name" autoCapitalize="words" enterKeyHint="next" placeholder="Full name" defaultValue={v.name} required {...err("name")} />
       </Field>
 
       <Field name="email" label="Email *" error={e.email}>
-        <input id="email" name="email" type="email" autoComplete="email" placeholder="you@company.com" defaultValue={v.email} required {...err("email")} />
+        <input id="email" name="email" type="email" inputMode="email" autoCapitalize="off" autoCorrect="off" spellCheck={false} enterKeyHint="next" autoComplete="email" placeholder="you@company.com" defaultValue={v.email} required {...err("email")} />
       </Field>
 
       <Field name="phone" label="Phone / WhatsApp" error={e.phone}>
-        <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="+91" defaultValue={v.phone} {...err("phone")} />
+        <input id="phone" name="phone" type="tel" inputMode="tel" enterKeyHint="next" autoComplete="tel" placeholder="+91" defaultValue={v.phone} {...err("phone")} />
       </Field>
 
       <Field name="organisation" label="Organisation">
-        <input id="organisation" name="organisation" autoComplete="organization" placeholder="Company, college or event" defaultValue={v.organisation} />
+        <input id="organisation" name="organisation" autoCapitalize="words" enterKeyHint="next" autoComplete="organization" placeholder="Company, college or event" defaultValue={v.organisation} />
       </Field>
 
       <Field name="audience" label="Audience size">

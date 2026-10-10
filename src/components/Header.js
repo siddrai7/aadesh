@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { nav, site } from "@/lib/site";
-import { ArrowRight } from "./Icons";
+import { nav, site, telHref, whatsappLink } from "@/lib/site";
+import { ArrowRight, Phone, WhatsApp } from "./Icons";
 
 export default function Header() {
   const pathname = usePathname();
@@ -96,6 +96,14 @@ export default function Header() {
             </li>
           ))}
         </ul>
+        <div className="mobile-menu__actions">
+          <a href={whatsappLink()} target="_blank" rel="noreferrer" className="btn">
+            <WhatsApp /> WhatsApp
+          </a>
+          <a href={telHref} className="btn btn--ghost">
+            <Phone /> Call
+          </a>
+        </div>
         <div className="mobile-menu__foot">
           <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
           <a href={site.socials.instagram} target="_blank" rel="noreferrer">Instagram</a>

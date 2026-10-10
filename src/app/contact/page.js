@@ -1,7 +1,7 @@
 import Mask from "@/components/Mask";
 import EnquiryForm from "./EnquiryForm";
 import { ArrowUpRight, Facebook, Instagram, Mail, Phone, WhatsApp } from "@/components/Icons";
-import { site, whatsappLink } from "@/lib/site";
+import { site, telHref, whatsappLink } from "@/lib/site";
 
 export const metadata = {
   title: "Contact",
@@ -13,7 +13,7 @@ const channels = [
   { name: "Instagram", handle: site.socials.instagramHandle, href: site.socials.instagram, Icon: Instagram, external: true },
   { name: "Facebook", handle: site.socials.facebookHandle, href: site.socials.facebook, Icon: Facebook, external: true },
   { name: "Email", handle: site.contact.email, href: `mailto:${site.contact.email}`, Icon: Mail },
-  { name: "Call", handle: site.contact.phone, href: `tel:${site.contact.phone.replace(/\s/g, "")}`, Icon: Phone },
+  { name: "Call", handle: site.contact.phone, href: telHref, Icon: Phone },
 ];
 
 export default function Contact() {
@@ -34,6 +34,17 @@ export default function Contact() {
       </section>
 
       <section className="section" style={{ paddingTop: 0 }} id="enquire">
+        <div className="container quick" aria-label="Quick contact">
+          <a href={whatsappLink()} target="_blank" rel="noreferrer" className="quick__btn">
+            <WhatsApp /> WhatsApp
+          </a>
+          <a href={telHref} className="quick__btn">
+            <Phone /> Call
+          </a>
+          <a href={`mailto:${site.contact.email}`} className="quick__btn">
+            <Mail /> Email
+          </a>
+        </div>
         <div className="container contact">
           <aside className="contact__info">
             <div className="contact__block reveal">
@@ -44,7 +55,7 @@ export default function Contact() {
             </div>
             <div className="contact__block reveal" style={{ "--d": "0.05s" }}>
               <span className="label">Phone & WhatsApp</span>
-              <a href={`tel:${site.contact.phone.replace(/\s/g, "")}`} className="contact__big link-line">
+              <a href={telHref} className="contact__big link-line">
                 {site.contact.phone}
               </a>
             </div>

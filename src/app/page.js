@@ -25,50 +25,48 @@ export default function Home() {
     <>
       {/* ---------- Hero ---------- */}
       <section className="hero">
-          <div className="container hero__top">
-            <span className="label label--dot reveal">Sales Coach · Motivational Speaker</span>
-            <span className="label reveal" style={{ "--d": "0.1s" }}>
-              {site.location}
-            </span>
+        <div className="container hero__top">
+          <span className="label label--dot reveal">Sales Coach · Motivational Speaker</span>
+          <span className="label hero__loc reveal" style={{ "--d": "0.1s" }}>
+            {site.location}
+          </span>
+        </div>
+
+        <div className="container hero__grid">
+          <Mask
+            className="display hero__name"
+            step={0.12}
+            lines={[
+              "Aadesh",
+              <span className="indent" key="l2">
+                <em>Sharma</em>
+              </span>,
+            ]}
+          />
+          <div className="hero__aside reveal" style={{ "--d": "0.35s" }}>
+            <Portrait caption="On stage — soon" priority />
           </div>
 
-          <div className="container hero__grid">
-            <Mask
-              className="display hero__name"
-              step={0.12}
-              lines={[
-                "Aadesh",
-                <span className="indent" key="l2">
-                  <em>Sharma</em>
-                </span>,
-              ]}
-            />
-            <div className="hero__aside reveal" style={{ "--d": "0.35s" }}>
-              <Portrait caption="On stage — soon" priority />
-            </div>
-          </div>
-
-          <div className="container">
-            <div className="hero__bottom">
-              <div className="stack-sm reveal" style={{ "--d": "0.5s" }}>
-                <p className="lede">
-                  Sales is not a talent — it’s a trainable craft fuelled by belief. I help people and teams build both.
-                </p>
-                <div className="hero__ctas">
-                  <Link href="/contact#enquire" className="btn">
-                    Book a session <ArrowRight />
-                  </Link>
-                  <Link href="/services" className="btn btn--ghost">
-                    Explore services
-                  </Link>
-                </div>
+          <div className="hero__bottom">
+            <div className="stack-sm reveal" style={{ "--d": "0.5s" }}>
+              <p className="lede">
+                Sales is not a talent — it’s a trainable craft fuelled by belief. I help people and teams build both.
+              </p>
+              <div className="hero__ctas">
+                <Link href="/contact#enquire" className="btn">
+                  Book a session <ArrowRight />
+                </Link>
+                <Link href="/services" className="btn btn--ghost">
+                  Explore services
+                </Link>
               </div>
-              <a href="#intro" className="scroll-cue label reveal" style={{ "--d": "0.6s" }}>
-                <span className="scroll-cue__line" />
-                Scroll
-              </a>
             </div>
+            <a href="#intro" className="scroll-cue label reveal" style={{ "--d": "0.6s" }}>
+              <span className="scroll-cue__line" />
+              Scroll
+            </a>
           </div>
+        </div>
       </section>
 
       <Marquee items={["Sell with conviction", "Speak with purpose", "Lead with energy", "Close with confidence"]} />
@@ -178,6 +176,7 @@ export default function Home() {
             </div>
           </div>
 
+          <span className="swipe-hint label" aria-hidden="true">Swipe →</span>
           <div className="media-grid">
             <article className="media media--a reveal">
               <div className="media__fill media__fill--1" />

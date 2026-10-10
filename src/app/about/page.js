@@ -115,6 +115,7 @@ export default function About() {
               <Mask as="h2" className="h2" lines={["What every", <>session <em>stands on</em></>]} />
             </div>
           </div>
+          <span className="swipe-hint label" aria-hidden="true">Swipe →</span>
           <div className="values">
             {values.map((v, i) => (
               <article className="value reveal" key={v.k} style={{ "--d": `${i * 0.08}s` }}>

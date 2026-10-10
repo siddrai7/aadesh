@@ -31,6 +31,8 @@ export const nav = [
   { href: "/contact", label: "Contact" },
 ];
 
+export const telHref = `tel:${site.contact.phone.replace(/\s/g, "")}`;
+
 export function whatsappLink(message = "Hi Aadesh, I'd like to know more about your sessions.") {
   return `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(message)}`;
 }
