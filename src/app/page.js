@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Mask from "@/components/Mask";
+import RevealObserver from "@/components/RevealObserver";
 import Marquee from "@/components/Marquee";
 import CtaBand from "@/components/CtaBand";
 import { ArrowRight, ArrowUpRight } from "@/components/Icons";
@@ -21,12 +22,15 @@ export default function Home() {
       {/* ---------- Hero ---------- */}
       <section className="hero dark">
         <div className="hero__media">
+          {/* Sized in CSS (not `fill`) so phones can scale and centre him in the frame. */}
           <Image
             src={site.portrait}
             alt="Aadesh Sharma walking towards the camera in a cream blazer"
-            fill
-            priority
-            sizes="(min-width: 900px) 54vw, 100vw"
+            width={1121}
+            height={1403}
+            preload
+            sizes="(min-width: 900px) 50vw, 150vw"
+            className="hero__img"
           />
         </div>
 
@@ -196,6 +200,7 @@ export default function Home() {
       </section>
 
       <CtaBand />
+      <RevealObserver />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import Mask from "@/components/Mask";
+import RevealObserver from "@/components/RevealObserver";
 import EnquiryForm from "./EnquiryForm";
 import { ArrowUpRight, Facebook, Instagram, Mail, Phone, WhatsApp } from "@/components/Icons";
 import { site, telHref, whatsappLink } from "@/lib/site";
@@ -99,6 +100,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
+      <RevealObserver />
     </>
   );
 }

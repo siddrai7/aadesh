@@ -1,7 +1,6 @@
 import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import RevealObserver from "@/components/RevealObserver";
 import MobileBar from "@/components/MobileBar";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -61,7 +60,6 @@ export default function RootLayout({ children }) {
         <main>{children}</main>
         <Footer />
         <MobileBar />
-        <RevealObserver />
       </body>
     </html>
   );

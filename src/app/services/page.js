@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Mask from "@/components/Mask";
+import RevealObserver from "@/components/RevealObserver";
 import CtaBand from "@/components/CtaBand";
 import { ArrowRight } from "@/components/Icons";
 import { services } from "@/lib/site";
@@ -127,6 +128,7 @@ export default function Services() {
       </section>
 
       <CtaBand />
+      <RevealObserver />
     </>
   );
 }

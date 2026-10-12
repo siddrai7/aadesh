@@ -1,23 +1,23 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 
-// Adds `is-in` to every `.reveal` / `[data-reveal]` element as it scrolls into view.
+// Marks every `.reveal` / `[data-reveal]` element with `data-in` as it scrolls into view.
+// Render it as the last child of each page (not in the layout): its effect then runs only
+// after that page has hydrated, so React never sees the attribute as a mismatch.
 export default function RevealObserver() {
-  const pathname = usePathname();
-
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal:not(.is-in), [data-reveal]:not(.is-in)");
+    const show = (el) => el.setAttribute("data-in", "");
+    const els = document.querySelectorAll(".reveal:not([data-in]), [data-reveal]:not([data-in])");
     if (!("IntersectionObserver" in window)) {
-      els.forEach((el) => el.classList.add("is-in"));
+      els.forEach(show);
       return;
     }
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-in");
+            show(entry.target);
             io.unobserve(entry.target);
           }
         });
@@ -26,11 +26,11 @@ export default function RevealObserver() {
     );
     els.forEach((el) => {
       // Anything already on screen animates in now, even if it sits right at the bottom edge.
-      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("is-in");
+      if (el.getBoundingClientRect().top < window.innerHeight) show(el);
       else io.observe(el);
     });
     return () => io.disconnect();
-  }, [pathname]);
+  }, []);
 
   return null;
 }

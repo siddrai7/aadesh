@@ -1,4 +1,5 @@
 import Mask from "@/components/Mask";
+import RevealObserver from "@/components/RevealObserver";
 import Marquee from "@/components/Marquee";
 import Portrait from "@/components/Portrait";
 import CtaBand from "@/components/CtaBand";
@@ -172,6 +173,7 @@ export default function About() {
       </section>
 
       <CtaBand eyebrow="Work with Aadesh" />
+      <RevealObserver />
     </>
   );
 }
