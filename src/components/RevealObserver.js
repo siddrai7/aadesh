@@ -24,7 +24,11 @@ export default function RevealObserver() {
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
     );
-    els.forEach((el) => io.observe(el));
+    els.forEach((el) => {
+      // Anything already on screen animates in now, even if it sits right at the bottom edge.
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("is-in");
+      else io.observe(el);
+    });
     return () => io.disconnect();
   }, [pathname]);
 

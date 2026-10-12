@@ -6,31 +6,36 @@ import { services } from "@/lib/site";
 
 export const metadata = {
   title: "Services",
-  description: "Motivational keynotes, one-on-one sales coaching and hands-on team workshops by Aadesh Sharma.",
+  description:
+    "Real estate strategy & consulting, entrepreneurship & business growth, corporate training and strategic networking with Aadesh Sharma.",
 };
 
 const formats = [
-  { t: "In person", b: "On-site at your venue, campus or office — anywhere in India and beyond." },
-  { t: "Online", b: "Live virtual sessions engineered for energy and interaction, not slides on a screen." },
-  { t: "Ongoing", b: "Monthly coaching programs for individuals and teams who want sustained growth." },
+  { t: "Consulting", b: "One-on-one strategy for developers, investors, brokers and business owners, focused on your project and your market." },
+  { t: "Training programs", b: "In-person and online programs for corporate and sales teams, shaped around your people and your goals." },
+  { t: "Partnerships", b: "Collaborations, channel partner networks and franchise opportunities where everyone grows together." },
 ];
 
 const faqs = [
   {
-    q: "How far in advance should we book?",
-    a: "For keynotes and workshops, three to four weeks is ideal so the session can be tailored to your audience. Shorter timelines are often possible — just ask.",
+    q: "Who do you typically work with?",
+    a: "Real estate developers, channel partners, brokers, investors, entrepreneurs, business associates and corporate teams: anyone looking to grow through the right strategy, relationships and people.",
   },
   {
-    q: "Can sessions be customised for our industry?",
-    a: "Always. Every engagement starts with a short discovery call to understand your audience, goals and the challenges your team is facing.",
+    q: "Do you work with developers and channel partners on projects?",
+    a: "Yes. Project marketing, channel partner development and developer–broker collaboration are at the heart of my real estate work.",
   },
   {
-    q: "Which languages do you speak in?",
-    a: "Sessions can be delivered in English, Hindi, or a natural mix of both — whatever connects best with your audience.",
+    q: "Can a training program be customised for our team?",
+    a: "Always. Every program starts with a conversation about your team, your challenges and what growth looks like for you.",
   },
   {
-    q: "Do you coach individuals as well as teams?",
-    a: "Yes. One-on-one coaching is available for sales professionals, founders and anyone who needs to persuade for a living.",
+    q: "Which languages do you work in?",
+    a: "Hindi, English, or a natural mix of both, whatever works best for the people in the room.",
+  },
+  {
+    q: "How do we get started?",
+    a: "Send a message on WhatsApp or fill in the enquiry form. Aadesh replies personally to set up a first conversation.",
   },
 ];
 
@@ -40,12 +45,12 @@ export default function Services() {
       <section className="page-hero">
         <div className="container">
           <span className="label label--dot reveal">Services</span>
-          <Mask className="display page-hero__title" lines={["Keynotes, coaching", <>& <em>workshops</em></>]} />
+          <Mask className="display page-hero__title" lines={["Strategy, growth", <>&amp; <em>people</em></>]} />
           <div className="page-hero__foot">
             <span className="label reveal">(Offering)</span>
             <p className="lede reveal" style={{ "--d": "0.2s" }}>
-              Three ways to bring sharper selling and stronger belief to your people. Every engagement is tailored —
-              nothing comes off a shelf.
+              Four areas of work, one approach: connect the right people, find the right opportunities and build
+              relationships that create long-term value.
             </p>
           </div>
         </div>
@@ -58,7 +63,7 @@ export default function Services() {
               <span className="svc-detail__no reveal">{s.no}</span>
               <div className="stack-sm" style={{ gap: 40 }}>
                 <div className="stack-sm">
-                  <Mask as="h2" className="h2" lines={[s.title]} />
+                  <Mask as="h2" className="h2 svc-detail__title" lines={[s.title]} />
                   <p className="lede reveal">{s.lede}</p>
                 </div>
                 <div className="svc-detail__body reveal" style={{ "--d": "0.1s" }}>
@@ -66,7 +71,7 @@ export default function Services() {
                     <p>{s.body}</p>
                     <div>
                       <Link href={`/contact?service=${s.id}#enquire`} className="btn btn--ghost">
-                        Enquire about {s.title.toLowerCase()} <ArrowRight />
+                        Enquire about this <ArrowRight />
                       </Link>
                     </div>
                   </div>
@@ -87,7 +92,7 @@ export default function Services() {
           <div className="section-head">
             <span className="label reveal">(Formats)</span>
             <div className="section-head__right">
-              <Mask as="h2" className="h2" lines={["Wherever your", <>people <em>are</em></>]} />
+              <Mask as="h2" className="h2" lines={["Ways to", <><em>work together</em></>]} />
             </div>
           </div>
           <div className="formats">

@@ -31,15 +31,17 @@ export const metadata = {
     template: `%s — ${site.name}`,
   },
   description:
-    "Aadesh Sharma is a sales coach and motivational speaker helping individuals and teams sell with conviction. Book keynotes, sales coaching and team workshops.",
+    "Aadesh Sharma is a real estate strategist, entrepreneur and corporate trainer with 20+ years across sales, marketing, business development and real estate. I build people, partnerships & possibilities.",
   appleWebApp: { title: "Aadesh", statusBarStyle: "default" },
   formatDetection: { telephone: false },
   openGraph: {
     title: `${site.name} — ${site.role}`,
-    description: site.tagline,
+    description: `${site.tagline} ${site.promise}`,
     url: site.url,
     siteName: site.name,
     type: "website",
+    // Shown in WhatsApp / social link previews.
+    images: [{ url: site.portrait, width: 1121, height: 1403, alt: site.name }],
   },
 };
 

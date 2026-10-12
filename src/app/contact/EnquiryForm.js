@@ -38,7 +38,7 @@ export default function EnquiryForm() {
   const [picked, setPicked] = useState(null);
   const service = useSyncExternalStore(noop, getService, () => null);
   const fromUrl = interests.some((i) => i.value === service) ? service : null;
-  const interest = picked ?? fromUrl ?? "speaking";
+  const interest = picked ?? fromUrl ?? interests[0].value;
   const [clientErrors, setClientErrors] = useState(null);
 
   const e = clientErrors || state.errors || {};
@@ -95,7 +95,7 @@ export default function EnquiryForm() {
   return (
     <form action={formAction} onSubmit={handleSubmit} className="form" noValidate>
       <fieldset className="field field--full" data-invalid={e.interest ? "true" : undefined}>
-        <legend>I’d like to enquire about</legend>
+        <legend>I’d like to talk about</legend>
         <div className="chips">
           {interests.map((i) => (
             <label className="chip" key={i.value}>
@@ -125,11 +125,11 @@ export default function EnquiryForm() {
         <input id="phone" name="phone" type="tel" inputMode="tel" enterKeyHint="next" autoComplete="tel" placeholder="+91" defaultValue={v.phone} {...err("phone")} />
       </Field>
 
-      <Field name="organisation" label="Organisation">
-        <input id="organisation" name="organisation" autoCapitalize="words" enterKeyHint="next" autoComplete="organization" placeholder="Company, college or event" defaultValue={v.organisation} />
+      <Field name="organisation" label="Company / organisation">
+        <input id="organisation" name="organisation" autoCapitalize="words" enterKeyHint="next" autoComplete="organization" placeholder="Company, project or firm" defaultValue={v.organisation} />
       </Field>
 
-      <Field name="audience" label="Audience size">
+      <Field name="audience" label="People involved">
         <select id="audience" name="audience" defaultValue={v.audience || ""}>
           <option value="">Select</option>
           {audienceOptions.map((o) => (
@@ -151,12 +151,12 @@ export default function EnquiryForm() {
         <input id="date" name="date" type="date" defaultValue={v.date} />
       </Field>
 
-      <Field name="message" label="Tell us about your event or goals *" error={e.message} full>
+      <Field name="message" label="What do you have in mind? *" error={e.message} full>
         <textarea
           id="message"
           name="message"
           rows={5}
-          placeholder="Who’s the audience, what’s the occasion, and what would success look like?"
+          placeholder="A project, a partnership, a training for your team — share a little about it."
           defaultValue={v.message}
           required
           {...err("message")}
@@ -170,7 +170,7 @@ export default function EnquiryForm() {
 
       <div className="form__foot">
         <p className="form__note">
-          This opens WhatsApp with your details filled in. Just tap Send, and replies usually come the same day.
+          This opens WhatsApp with your details filled in. Just tap Send, and Aadesh replies personally.
         </p>
         <button type="submit" className="btn btn--wa" disabled={pending}>
           <WhatsApp /> {pending ? "Opening…" : "Send on WhatsApp"}

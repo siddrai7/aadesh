@@ -3,7 +3,7 @@ import Mask from "./Mask";
 import { ArrowRight } from "./Icons";
 import { whatsappLink } from "@/lib/site";
 
-export default function CtaBand({ eyebrow = "Let’s work together" }) {
+export default function CtaBand({ eyebrow = "Let’s build together" }) {
   return (
     <section className="section dark cta">
       <div className="cta__glow" aria-hidden="true" />
@@ -13,16 +13,16 @@ export default function CtaBand({ eyebrow = "Let’s work together" }) {
           as="h2"
           className="display cta__title"
           lines={[
-            "Bring the energy",
+            "Let’s build something",
             <>
-              to your <em>stage.</em>
+              <em>meaningful.</em>
             </>,
           ]}
         />
         <div className="cta__row">
           <p className="lede reveal" style={{ "--d": "0.2s" }}>
-            Planning a conference, a sales kick-off or a team offsite? Tell us about your audience and we’ll shape a
-            session around it.
+            A real estate project, a business partnership or a training program for your team: start with a
+            conversation.
           </p>
           <div className="hero__ctas reveal" style={{ "--d": "0.3s" }}>
             <Link href="/contact#enquire" className="btn">

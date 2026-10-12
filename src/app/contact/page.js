@@ -5,7 +5,7 @@ import { site, telHref, whatsappLink } from "@/lib/site";
 
 export const metadata = {
   title: "Contact",
-  description: "Enquire about motivational sessions, sales coaching and team workshops with Aadesh Sharma.",
+  description: "Connect with Aadesh Sharma about real estate consulting, business partnerships and corporate training.",
 };
 
 const channels = [
@@ -22,12 +22,12 @@ export default function Contact() {
       <section className="page-hero">
         <div className="container">
           <span className="label label--dot reveal">Contact</span>
-          <Mask className="display page-hero__title" lines={["Let’s make your", <>next event <em>unforgettable.</em></>]} />
+          <Mask className="display page-hero__title" lines={["Let’s build", <>something <em>together.</em></>]} />
           <div className="page-hero__foot">
             <span className="label reveal">(Say hello)</span>
             <p className="lede reveal" style={{ "--d": "0.2s" }}>
-              Motivational sessions, sales coaching or a workshop for your team. Fill in a few details and send them
-              straight to Aadesh on WhatsApp.
+              Real estate, a business partnership or a training program for your team. Share a few details and send
+              them straight to Aadesh on WhatsApp.
             </p>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function Contact() {
             <div className="form-card__head">
               <span className="label label--dot">Enquiry form</span>
               <h2 className="h3">
-                Organise a session <em style={{ color: "var(--ember)" }}>with Aadesh</em>
+                Start a conversation <em style={{ color: "var(--ember)" }}>with Aadesh</em>
               </h2>
             </div>
             <EnquiryForm />

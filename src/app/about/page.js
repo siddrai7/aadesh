@@ -2,39 +2,40 @@ import Mask from "@/components/Mask";
 import Marquee from "@/components/Marquee";
 import Portrait from "@/components/Portrait";
 import CtaBand from "@/components/CtaBand";
+import { mission, philosophy, pillars, site, vision } from "@/lib/site";
 
 export const metadata = {
   title: "About",
-  description: "The story of Aadesh Sharma — from frontline sales and marketing to the stage as a motivational speaker and sales coach.",
+  description:
+    "Aadesh Sharma — entrepreneur, real estate strategist and corporate trainer with over two decades across sales, marketing, business development, real estate and franchise development.",
 };
 
-const chapters = [
+const fields = [
   {
-    tag: "Chapter 01",
-    title: "Frontline sales",
-    body: "More than two years carrying a target — cold calls, follow-ups, tough negotiations and the quiet discipline of showing up every day. This is where the method was forged.",
+    tag: "Sales & Marketing",
+    title: "Where it began",
+    body: "Learning how buyers think and how messages land, and that every sale starts with a relationship.",
   },
   {
-    tag: "Chapter 02",
-    title: "Marketing",
-    body: "Time on the other side of the pipeline taught how attention is earned: positioning, messaging and how a story moves a buyer before the first conversation.",
+    tag: "Insurance & Network Marketing",
+    title: "Trust at scale",
+    body: "Building teams and long-term client trust, one conversation and one commitment at a time.",
   },
   {
-    tag: "Chapter 03",
-    title: "Coaching",
-    body: "Turning lived experience into repeatable frameworks — helping individual sellers and teams find their edge and their confidence.",
+    tag: "Business Development & Franchising",
+    title: "Ideas into businesses",
+    body: "Strategic partnerships, market expansion and franchise development that let businesses grow together.",
   },
   {
-    tag: "Now",
-    title: "The stage",
-    body: "Speaking to rooms of students, professionals and sales teams about belief, resilience and the craft of persuasion.",
+    tag: "Real Estate",
+    title: "Strategy & ecosystems",
+    body: "Project marketing, investor relations and developer–broker–channel partner collaboration built on transparency.",
   },
-];
-
-const values = [
-  { k: "Honesty", t: "Real over rehearsed", b: "No recycled quotes or borrowed stories. Everything shared comes from the field." },
-  { k: "Energy", t: "Rooms that move", b: "Sessions designed to be felt — interactive, high-tempo and impossible to sit through on autopilot." },
-  { k: "Results", t: "Monday-morning ready", b: "Every idea comes with a way to use it the very next working day." },
+  {
+    tag: "Corporate Training",
+    title: "Developing people",
+    body: "Leadership mindset, communication and team development: helping people unlock their potential.",
+  },
 ];
 
 export default function About() {
@@ -43,12 +44,11 @@ export default function About() {
       <section className="page-hero">
         <div className="container">
           <span className="label label--dot reveal">About</span>
-          <Mask className="display page-hero__title" lines={["Built in the field.", <>Shared on <em>stage.</em></>]} />
+          <Mask className="display page-hero__title" lines={["Two decades of", <>building <em>possibilities.</em></>]} />
           <div className="page-hero__foot">
             <span className="label reveal">(Profile)</span>
             <p className="lede reveal" style={{ "--d": "0.2s" }}>
-              Aadesh Sharma is a sales coach and motivational speaker who learned persuasion the hard way — one
-              conversation at a time.
+              {site.name}: {site.roles.join(", ").replace(/, ([^,]*)$/, " and $1")}. {site.promise}
             </p>
           </div>
         </div>
@@ -57,47 +57,56 @@ export default function About() {
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container about-split">
           <div className="about-split__media reveal">
-            <Portrait caption="Studio portrait — soon" index="02" />
+            <Portrait src={site.portrait} caption={site.roles[0]} index="AS" />
           </div>
-          <div className="stack-sm" style={{ gap: 56 }}>
+          <div className="stack-sm" style={{ gap: 48 }}>
             <p className="statement reveal">
-              I believe anyone can learn to sell — <em>once they believe</em> in what they’re selling, and in themselves.
+              Success is not just about making money. It’s about <em>creating value</em> and building people.
             </p>
             <div className="prose reveal" style={{ "--d": "0.1s" }}>
               <p className="dropcap">
-                My career began where most sales careers do: on the phones, in the meetings, and in the long stretch
-                between a first hello and a signed deal. Over <strong>more than two years in sales</strong>, I learned that
-                the best closers aren’t the loudest people in the room — they’re the best listeners, the most prepared, and
-                the most resilient.
+                I am Aadesh Sharma, an entrepreneur, real estate strategist and corporate trainer with{" "}
+                <strong>over two decades of professional experience</strong> across sales, marketing, business
+                development, insurance, network marketing, real estate and franchise development.
               </p>
               <p>
-                A stint in <strong>marketing</strong> completed the picture. I saw how positioning, storytelling and timing
-                shape a buyer’s decision long before a salesperson enters the conversation. That dual perspective is now
-                at the heart of how I coach.
+                Over the years I have developed expertise in business strategy, real estate consulting, project
+                marketing, strategic partnerships, investor relations, team building and business expansion. Working across
+                industries taught me the value of <strong>connecting the right people</strong>, identifying the right
+                opportunities and building relationships that create long-term value.
               </p>
               <p>
-                Today I work as a <strong>sales coach</strong> and <strong>motivational speaker</strong>, helping students,
-                professionals and teams find the confidence to act and the skills to win. My sessions are honest,
-                energetic and relentlessly practical.
+                As a <strong>real estate strategist</strong>, I help people understand opportunities, evaluate business
+                potential and approach growth strategically, because informed decisions, transparent communication and
+                the right guidance build confidence.
+              </p>
+              <p>
+                As an <strong>entrepreneur</strong>, I believe in collaborative ecosystems where developers, channel
+                partners, brokers, investors and business associates work together toward shared success.
+              </p>
+              <p>
+                As a <strong>corporate trainer</strong>, I’m passionate about leadership mindset, communication and team
+                building. When people improve their mindset, skills and relationships, they unlock new levels of personal
+                and professional growth.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <Marquee items={["Listen deeply", "Prepare relentlessly", "Believe first", "Follow through"]} />
+      <Marquee items={philosophy} />
 
       <section className="section dark">
         <div className="container">
           <div className="section-head">
-            <span className="label reveal">(Journey)</span>
+            <span className="label reveal">(Experience)</span>
             <div className="section-head__right">
-              <Mask as="h2" className="h2" lines={["The road", <>so <em>far</em></>]} />
+              <Mask as="h2" className="h2" lines={["Built across", <><em>many industries</em></>]} />
             </div>
           </div>
           <ol className="timeline">
-            {chapters.map((c, i) => (
-              <li key={c.title} className="reveal" style={{ "--d": `${i * 0.06}s` }}>
+            {fields.map((c, i) => (
+              <li key={c.tag} className="reveal" style={{ "--d": `${i * 0.06}s` }}>
                 <span className="label">{c.tag}</span>
                 <h3 className="h3">{c.title}</h3>
                 <p>{c.body}</p>
@@ -109,24 +118,56 @@ export default function About() {
 
       <section className="section">
         <div className="container">
+          <div className="mv">
+            <article className="mv__item reveal">
+              <span className="label label--dot">My mission</span>
+              <p className="mv__text">{mission}</p>
+            </article>
+            <article className="mv__item reveal" style={{ "--d": "0.1s" }}>
+              <span className="label label--dot">My vision</span>
+              <p className="mv__text">{vision}</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
           <div className="section-head">
-            <span className="label reveal">(Principles)</span>
+            <span className="label reveal">(Pillars)</span>
             <div className="section-head__right">
-              <Mask as="h2" className="h2" lines={["What every", <>session <em>stands on</em></>]} />
+              <Mask as="h2" className="h2" lines={["What everything", <>is <em>built on</em></>]} />
             </div>
           </div>
           <span className="swipe-hint label" aria-hidden="true">Swipe →</span>
-          <div className="values">
-            {values.map((v, i) => (
-              <article className="value reveal" key={v.k} style={{ "--d": `${i * 0.08}s` }}>
-                <span className="label">0{i + 1} — {v.k}</span>
+          <div className="values values--4">
+            {pillars.map((v, i) => (
+              <article className="value reveal" key={v.title} style={{ "--d": `${i * 0.08}s` }}>
+                <span className="label">Pillar 0{i + 1}</span>
                 <div>
-                  <h3 className="h3">{v.t}</h3>
-                  <p>{v.b}</p>
+                  <h3 className="h3">{v.title}</h3>
+                  <p>{v.body}</p>
                 </div>
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section dark" style={{ paddingTop: "clamp(72px, 9vw, 140px)" }}>
+        <div className="container quote">
+          <span className="label reveal">My philosophy</span>
+          <p className="philosophy reveal">
+            {philosophy.map((p, i) => (
+              <span key={p}>
+                {i === philosophy.length - 1 ? <em>{p}.</em> : `${p}.`}{" "}
+              </span>
+            ))}
+          </p>
+          <p className="lede reveal" style={{ margin: "0 auto", textAlign: "center" }}>
+            Lasting success comes when business growth and people development move forward together, with trust,
+            clarity and purpose.
+          </p>
         </div>
       </section>
 

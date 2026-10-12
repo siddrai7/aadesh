@@ -37,8 +37,12 @@ export default function Header() {
 
   const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
+  // The home hero is dark, so the header starts light-on-dark there.
+  const overDarkHero = pathname === "/" && !scrolled && !open;
+
   const cls = [
     "header",
+    overDarkHero && "header--light",
     scrolled && !open && "header--scrolled",
     hidden && !open && "header--hidden",
     open && "header--menu-open",
@@ -69,7 +73,7 @@ export default function Header() {
               ))}
             </ul>
             <Link href="/contact#enquire" className="btn nav__cta">
-              Book a session <ArrowRight size={14} />
+              Let’s connect <ArrowRight size={14} />
             </Link>
           </nav>
 

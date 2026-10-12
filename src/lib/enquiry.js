@@ -2,15 +2,17 @@
 // and the WhatsApp message read the same everywhere.
 import { site, whatsappLink } from "./site";
 
+// Values match the service ids in site.js so /contact?service=<id> preselects them.
 export const interestOptions = [
-  { value: "speaking", label: "Motivational session" },
-  { value: "coaching", label: "Sales coaching" },
-  { value: "workshops", label: "Team workshop" },
+  { value: "real-estate", label: "Real estate consulting" },
+  { value: "business-growth", label: "Business growth & partnerships" },
+  { value: "training", label: "Corporate training" },
+  { value: "sales-networking", label: "Sales & networking" },
   { value: "other", label: "Something else" },
 ];
 
 export const audienceOptions = [
-  { value: "1", label: "Just me (1:1)" },
+  { value: "1", label: "Just me" },
   { value: "2-25", label: "2 – 25" },
   { value: "26-100", label: "26 – 100" },
   { value: "101-500", label: "101 – 500" },
@@ -35,7 +37,7 @@ export function validateEnquiry(v) {
   if (v.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) errors.email = "Please enter a valid email address.";
   if (v.phone && !/^[+\d][\d\s()-]{6,}$/.test(v.phone)) errors.phone = "Please enter a valid phone number.";
   if (!interestOptions.some((o) => o.value === v.interest)) errors.interest = "Choose what you’d like to enquire about.";
-  if (v.message.length < 10) errors.message = "A few words about your event or goals, please.";
+  if (v.message.length < 10) errors.message = "A few words about what you have in mind, please.";
   if (v.message.length > 1500) errors.message = "Please keep your message under 1500 characters.";
   return errors;
 }
@@ -52,22 +54,22 @@ function formatDate(iso) {
 
 export function enquiryMessage(v) {
   const rows = [
-    ["Enquiry for", labelOf(interestOptions, v.interest)],
+    ["Regarding", labelOf(interestOptions, v.interest)],
     ["Name", v.name],
     ["Organisation", v.organisation],
     ["Email", v.email],
     ["Phone", v.phone],
-    ["Audience size", labelOf(audienceOptions, v.audience)],
+    ["People involved", labelOf(audienceOptions, v.audience)],
     ["Format", labelOf(formatOptions, v.format)],
     ["Preferred date", v.date && formatDate(v.date)],
   ].filter(([, value]) => value);
 
   return [
-    `Hi ${site.shortName}, I’d like to enquire about a session.`,
+    `Hi ${site.shortName}, I’m reaching out through your website.`,
     "",
     ...rows.map(([k, value]) => `*${k}:* ${value}`),
     "",
-    "*About the event:*",
+    "*Details:*",
     v.message,
   ].join("\n");
 }

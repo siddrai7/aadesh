@@ -4,8 +4,11 @@
 export const site = {
   name: "Aadesh Sharma",
   shortName: "Aadesh",
-  role: "Sales Coach & Motivational Speaker",
-  tagline: "Helping people sell with conviction and live with purpose.",
+  role: "Real Estate Strategist · Entrepreneur · Corporate Trainer",
+  roles: ["Real Estate Strategist", "Entrepreneur", "Corporate Trainer"],
+  tagline: "I build people, partnerships & possibilities.",
+  promise: "Transforming relationships into opportunities, ideas into businesses, and vision into growth.",
+  portrait: "/images/aadesh-sharma.jpg",
   url: "https://aadeshsharma.com",
   location: "India · Available worldwide",
 
@@ -33,33 +36,85 @@ export const nav = [
 
 export const telHref = `tel:${site.contact.phone.replace(/\s/g, "")}`;
 
-export function whatsappLink(message = "Hi Aadesh, I'd like to know more about your sessions.") {
+export function whatsappLink(message = "Hi Aadesh, I'd like to connect with you.") {
   return `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
 export const services = [
   {
-    id: "speaking",
+    id: "real-estate",
     no: "01",
-    title: "Motivational Speaking",
-    lede: "Keynotes that move rooms — and keep moving them long after the applause.",
-    body: "High-energy, story-led sessions for conferences, colleges, corporate offsites and sales kick-offs. Every talk is built around your audience, your goals and the change you want to see on Monday morning.",
-    points: ["Conference keynotes", "Corporate offsites & kick-offs", "College & youth sessions", "Leadership town halls"],
+    title: "Real Estate Strategy & Consulting",
+    short: "Real Estate Strategy",
+    lede: "Clear thinking and the right connections for every real estate decision.",
+    body: "Helping developers, investors and partners understand real estate opportunities, evaluate business potential and build a strategic approach to growth — with transparent communication and informed decisions at every step.",
+    points: [
+      "Real estate opportunities",
+      "Project marketing",
+      "Investor relations",
+      "Developer–broker collaboration",
+      "Channel partner development",
+      "Strategic networking",
+    ],
   },
   {
-    id: "coaching",
+    id: "business-growth",
     no: "02",
-    title: "Sales Coaching",
-    lede: "Practical, field-tested coaching for people who carry a number.",
-    body: "One-on-one and small-group coaching rooted in real frontline selling. From prospecting and discovery to objection handling and closing — we sharpen the craft and the mindset behind it.",
-    points: ["1:1 performance coaching", "Objection handling & closing", "Prospecting & pipeline discipline", "Mindset & consistency"],
+    title: "Entrepreneurship & Business Growth",
+    short: "Business Growth",
+    lede: "Collaborative ecosystems where businesses grow together.",
+    body: "Building the alliances, expansion plans and partner networks that turn ideas into businesses — combining relationship building, market understanding and execution-oriented thinking.",
+    points: [
+      "Business development",
+      "Strategic alliances",
+      "Market expansion",
+      "Franchise development",
+      "Collaborative business opportunities",
+    ],
   },
   {
-    id: "workshops",
+    id: "training",
     no: "03",
-    title: "Team Workshops",
-    lede: "Hands-on training that turns sales teams into selling cultures.",
-    body: "Interactive half-day and full-day workshops for sales and marketing teams — role-plays, live drills and frameworks your people can use the same afternoon.",
-    points: ["Sales team bootcamps", "Sales × marketing alignment", "Customer conversation drills", "Custom programs"],
+    title: "Corporate Training & People Development",
+    short: "Corporate Training",
+    lede: "Programs that help people recognise — and unlock — their potential.",
+    body: "Interactive training for teams and leaders. When people improve their mindset, skills and relationships, they unlock new levels of personal and professional growth.",
+    points: [
+      "Leadership mindset",
+      "Sales skills",
+      "Communication",
+      "Relationship building",
+      "Team development",
+      "Growth-oriented thinking",
+    ],
+  },
+  {
+    id: "sales-networking",
+    no: "04",
+    title: "Sales, Marketing & Strategic Networking",
+    short: "Sales & Networking",
+    lede: "Two decades of experience in turning conversations into lasting relationships.",
+    body: "Practical guidance rooted in more than twenty years across sales, marketing, insurance, network marketing and business development — focused on the relationships that create long-term value.",
+    points: [
+      "Business relationships",
+      "Customer engagement",
+      "Team building",
+      "Partnership development",
+    ],
   },
 ];
+
+export const pillars = [
+  { title: "People Development", body: "Helping individuals recognise their potential and grow their mindset, skills and confidence." },
+  { title: "Business Growth", body: "Identifying the right opportunities and building strategies that create sustainable value." },
+  { title: "Relationship Building", body: "Connecting the right people — developers, partners, investors and teams — on a foundation of trust." },
+  { title: "Leadership Mindset", body: "Clarity, ownership and growth-oriented thinking that people and organisations can build on." },
+];
+
+export const mission =
+  "To empower people, build strategic relationships, and create meaningful business opportunities through knowledge, collaboration, leadership, and a growth-oriented mindset.";
+
+export const vision =
+  "To become a trusted name in real estate strategy, entrepreneurship, and people development by building a network of empowered professionals, successful business partnerships, and value-driven opportunities.";
+
+export const philosophy = ["Build People", "Build Relationships", "Build Businesses", "Build a Legacy"];

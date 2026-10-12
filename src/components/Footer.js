@@ -7,8 +7,8 @@ export default function Footer() {
       <div className="container">
         <div className="footer__grid">
           <div className="footer__brand">
-            <span className="label label--dot">Available for 2026–27 bookings</span>
-            <p>{site.tagline} Sales coaching, keynotes and team workshops — in person and online.</p>
+            <span className="label label--dot">Open to partnerships &amp; engagements</span>
+            <p>{site.promise}</p>
           </div>
 
           <div className="footer__col">
@@ -27,7 +27,7 @@ export default function Footer() {
             <ul>
               {services.map((s) => (
                 <li key={s.id}>
-                  <Link href={`/services#${s.id}`}>{s.title}</Link>
+                  <Link href={`/services#${s.id}`}>{s.short}</Link>
                 </li>
               ))}
             </ul>
