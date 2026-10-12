@@ -356,6 +356,21 @@ textarea {
   transform: none;
 }
 
+/* Safety net: if JavaScript is slow or fails to load (weak mobile data, a blocked
+   script), never leave the page blank. Until RevealObserver marks the document
+   ready, everything fades in by itself after 2.5s. */
+html:not([data-reveal-ready]) .reveal,
+html:not([data-reveal-ready]) .mask > span {
+  animation: reveal-fallback 0.8s var(--ease) 2.5s forwards;
+}
+
+@keyframes reveal-fallback {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

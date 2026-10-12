@@ -20,10 +20,10 @@ export const site = {
   },
 
   socials: {
-    instagram: "https://instagram.com/aadeshsharma",
-    instagramHandle: "@aadeshsharma",
-    facebook: "https://facebook.com/aadeshsharma",
-    facebookHandle: "Aadesh Sharma",
+    instagram: "https://www.instagram.com/aadesh_1978",
+    instagramHandle: "@aadesh_1978",
+    facebook: "https://www.facebook.com/aadeshkumarsharma",
+    facebookHandle: "Aadesh Kumar Sharma",
   },
 };
 

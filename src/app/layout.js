@@ -51,7 +51,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
       <body>
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}.mask>span{transform:none!important}`}</style>
