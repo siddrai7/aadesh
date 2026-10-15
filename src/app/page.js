@@ -4,8 +4,10 @@ import Mask from "@/components/Mask";
 import RevealObserver from "@/components/RevealObserver";
 import Marquee from "@/components/Marquee";
 import CtaBand from "@/components/CtaBand";
+import Gallery from "@/components/Gallery";
 import { ArrowRight, ArrowUpRight } from "@/components/Icons";
 import { philosophy, pillars, services, site } from "@/lib/site";
+import { galleryFor } from "@/lib/gallery";
 
 const stats = [
   { num: "20", sup: "+", label: "Years of professional experience" },
@@ -17,6 +19,7 @@ const stats = [
 const network = ["Developers", "Channel partners", "Brokers", "Investors", "Entrepreneurs", "Business associates", "Corporate teams", "Sales professionals"];
 
 export default function Home() {
+  const photos = galleryFor("home");
   return (
     <>
       {/* ---------- Hero ---------- */}
@@ -186,6 +189,21 @@ export default function Home() {
           </ul>
         </div>
       </section>
+
+      {/* ---------- Gallery (shows once photos are added in src/lib/gallery.js) ---------- */}
+      {photos.length > 0 && (
+        <section className="section" style={{ paddingTop: 0 }}>
+          <div className="container">
+            <div className="section-head" style={{ marginBottom: "clamp(32px, 4vw, 56px)" }}>
+              <span className="label reveal">(05) — In the room</span>
+              <div className="section-head__right">
+                <Mask as="h2" className="h2" lines={["Moments from", <>the <em>work</em></>]} />
+              </div>
+            </div>
+            <Gallery photos={photos} />
+          </div>
+        </section>
+      )}
 
       {/* ---------- Quote ---------- */}
       <section className="section" style={{ background: "var(--paper-2)" }}>

@@ -3,7 +3,9 @@ import RevealObserver from "@/components/RevealObserver";
 import Marquee from "@/components/Marquee";
 import Portrait from "@/components/Portrait";
 import CtaBand from "@/components/CtaBand";
+import Gallery from "@/components/Gallery";
 import { mission, philosophy, pillars, site, vision } from "@/lib/site";
+import { aboutPortrait, galleryFor } from "@/lib/gallery";
 
 export const metadata = {
   title: "About",
@@ -40,6 +42,7 @@ const fields = [
 ];
 
 export default function About() {
+  const photos = galleryFor("about");
   return (
     <>
       <section className="page-hero">
@@ -58,7 +61,7 @@ export default function About() {
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container about-split">
           <div className="about-split__media reveal">
-            <Portrait src={site.portrait} caption={site.roles[0]} index="AS" />
+            <Portrait src={aboutPortrait || site.portrait} caption={site.roles[0]} index="AS" />
           </div>
           <div className="stack-sm" style={{ gap: 48 }}>
             <p className="statement reveal">
@@ -116,6 +119,20 @@ export default function About() {
           </ol>
         </div>
       </section>
+
+      {photos.length > 0 && (
+        <section className="section" style={{ paddingBottom: 0 }}>
+          <div className="container">
+            <div className="section-head" style={{ marginBottom: "clamp(32px, 4vw, 56px)" }}>
+              <span className="label reveal">(Moments)</span>
+              <div className="section-head__right">
+                <Mask as="h2" className="h2" lines={[<>Along the <em>way</em></>]} />
+              </div>
+            </div>
+            <Gallery photos={photos} />
+          </div>
+        </section>
+      )}
 
       <section className="section">
         <div className="container">
