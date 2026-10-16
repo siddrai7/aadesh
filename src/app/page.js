@@ -5,9 +5,10 @@ import RevealObserver from "@/components/RevealObserver";
 import Marquee from "@/components/Marquee";
 import CtaBand from "@/components/CtaBand";
 import Gallery from "@/components/Gallery";
+import Portrait from "@/components/Portrait";
 import { ArrowRight, ArrowUpRight } from "@/components/Icons";
 import { philosophy, pillars, services, site } from "@/lib/site";
-import { galleryFor } from "@/lib/gallery";
+import { galleryFor, portraits } from "@/lib/gallery";
 
 const stats = [
   { num: "20", sup: "+", label: "Years of professional experience" },
@@ -78,7 +79,20 @@ export default function Home() {
       {/* ---------- Intro ---------- */}
       <section className="section" id="intro">
         <div className="container intro">
-          <span className="label reveal">(01) — Introduction</span>
+          <div className="intro__aside">
+            <span className="label reveal">(01) — Introduction</span>
+            <div className="reveal" style={{ "--d": "0.1s" }}>
+              <Portrait
+                src={portraits.intro.src}
+                alt={portraits.intro.alt}
+                focus={portraits.intro.focus}
+                caption="Entrepreneur"
+                index="01"
+                sizes="(min-width: 900px) 24vw, 100vw"
+                className="intro__portrait"
+              />
+            </div>
+          </div>
           <div className="intro__body">
             <p className="statement reveal">
               Transforming <em>relationships</em> into opportunities, <span className="dim">ideas into businesses,</span>{" "}

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Mask from "@/components/Mask";
 import RevealObserver from "@/components/RevealObserver";
@@ -61,7 +62,20 @@ export default function Services() {
         <div className="container">
           {services.map((s) => (
             <article id={s.id} className="svc-detail" key={s.id}>
-              <span className="svc-detail__no reveal">{s.no}</span>
+              <div className="svc-detail__aside">
+                <span className="svc-detail__no reveal">{s.no}</span>
+                {s.image && (
+                  <figure className="svc-detail__img reveal" style={{ "--d": "0.1s" }}>
+                    <Image
+                      src={s.image.src}
+                      alt={s.image.alt}
+                      fill
+                      sizes="(min-width: 900px) 24vw, 100vw"
+                      style={{ objectPosition: s.image.focus || "center" }}
+                    />
+                  </figure>
+                )}
+              </div>
               <div className="stack-sm" style={{ gap: 40 }}>
                 <div className="stack-sm">
                   <Mask as="h2" className="h2 svc-detail__title" lines={[s.title]} />

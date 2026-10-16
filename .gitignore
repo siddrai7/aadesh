@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Photos that were sent but are not used on the site (kept locally, not deployed)
+/unused-photos/

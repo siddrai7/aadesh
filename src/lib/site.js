@@ -46,6 +46,11 @@ export const services = [
     no: "01",
     title: "Real Estate Strategy & Consulting",
     short: "Real Estate Strategy",
+    image: {
+      src: "/images/aadesh-lobby-armchair.jpg",
+      alt: "Aadesh Sharma seated in an armchair in a marble hotel lobby",
+      focus: "50% 55%",
+    },
     lede: "Clear thinking and the right connections for every real estate decision.",
     body: "Helping developers, investors and partners understand real estate opportunities, evaluate business potential and build a strategic approach to growth — with transparent communication and informed decisions at every step.",
     points: [
@@ -62,6 +67,11 @@ export const services = [
     no: "02",
     title: "Entrepreneurship & Business Growth",
     short: "Business Growth",
+    image: {
+      src: "/images/services/business-handshake.jpg",
+      alt: "Aadesh Sharma shaking hands with a business associate in an office",
+      focus: "50% 40%",
+    },
     lede: "Collaborative ecosystems where businesses grow together.",
     body: "Building the alliances, expansion plans and partner networks that turn ideas into businesses — combining relationship building, market understanding and execution-oriented thinking.",
     points: [
@@ -77,6 +87,11 @@ export const services = [
     no: "03",
     title: "Corporate Training & People Development",
     short: "Corporate Training",
+    image: {
+      src: "/images/services/speaking-session.jpg",
+      alt: "Aadesh Sharma speaking into a microphone during a session",
+      focus: "0% 30%",
+    },
     lede: "Programs that help people recognise — and unlock — their potential.",
     body: "Interactive training for teams and leaders. When people improve their mindset, skills and relationships, they unlock new levels of personal and professional growth.",
     points: [
@@ -93,6 +108,11 @@ export const services = [
     no: "04",
     title: "Sales, Marketing & Strategic Networking",
     short: "Sales & Networking",
+    image: {
+      src: "/images/services/event-presentation.jpg",
+      alt: "Aadesh Sharma smiling while presenting at a business event",
+      focus: "72% 30%",
+    },
     lede: "Two decades of experience in turning conversations into lasting relationships.",
     body: "Practical guidance rooted in more than twenty years across sales, marketing, insurance, network marketing and business development — focused on the relationships that create long-term value.",
     points: [

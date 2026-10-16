@@ -5,7 +5,7 @@ import Portrait from "@/components/Portrait";
 import CtaBand from "@/components/CtaBand";
 import Gallery from "@/components/Gallery";
 import { mission, philosophy, pillars, site, vision } from "@/lib/site";
-import { aboutPortrait, galleryFor } from "@/lib/gallery";
+import { galleryFor, portraits } from "@/lib/gallery";
 
 export const metadata = {
   title: "About",
@@ -61,7 +61,13 @@ export default function About() {
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container about-split">
           <div className="about-split__media reveal">
-            <Portrait src={aboutPortrait || site.portrait} caption={site.roles[0]} index="AS" />
+            <Portrait
+              src={portraits.about.src}
+              alt={portraits.about.alt}
+              focus={portraits.about.focus}
+              caption={site.roles[0]}
+              index="AS"
+            />
           </div>
           <div className="stack-sm" style={{ gap: 48 }}>
             <p className="statement reveal">

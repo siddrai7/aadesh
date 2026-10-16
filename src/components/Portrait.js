@@ -1,11 +1,20 @@
 import Image from "next/image";
 
-// Drop a photo into /public (e.g. /public/aadesh.jpg) and pass `src` to replace the monogram.
-export default function Portrait({ src, alt = "Portrait of Aadesh Sharma", caption = "Portrait", index = "01", preload = false }) {
+// Framed portrait with small editorial labels. Without `src` it shows an "AS" monogram.
+export default function Portrait({
+  src,
+  alt = "Portrait of Aadesh Sharma",
+  caption = "Portrait",
+  index = "01",
+  focus = "center",
+  sizes = "(max-width: 900px) 100vw, 40vw",
+  preload = false,
+  className = "",
+}) {
   return (
-    <figure className="portrait" style={{ margin: 0 }}>
+    <figure className={`portrait ${className}`.trim()} style={{ margin: 0 }}>
       {src ? (
-        <Image src={src} alt={alt} fill sizes="(max-width: 900px) 100vw, 40vw" preload={preload} />
+        <Image src={src} alt={alt} fill sizes={sizes} preload={preload} style={{ objectPosition: focus }} />
       ) : (
         <span className="portrait__mono" aria-hidden="true">AS</span>
       )}

@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Mask from "@/components/Mask";
 import RevealObserver from "@/components/RevealObserver";
 import EnquiryForm from "./EnquiryForm";
 import { ArrowUpRight, Facebook, Instagram, Mail, Phone, WhatsApp } from "@/components/Icons";
 import { site, telHref, whatsappLink } from "@/lib/site";
+import { portraits } from "@/lib/gallery";
 
 export const metadata = {
   title: "Contact",
@@ -48,6 +50,21 @@ export default function Contact() {
         </div>
         <div className="container contact">
           <aside className="contact__info">
+            <div className="contact__person reveal">
+              <figure className="contact__person-img">
+                <Image
+                  src={portraits.contact.src}
+                  alt={portraits.contact.alt}
+                  fill
+                  sizes="160px"
+                  style={{ objectPosition: portraits.contact.focus }}
+                />
+              </figure>
+              <div className="contact__block">
+                <span className="label label--dot">Talk to Aadesh directly</span>
+                <p className="contact__person-text">Every message is read and answered by Aadesh himself.</p>
+              </div>
+            </div>
             <div className="contact__block reveal">
               <span className="label">Email</span>
               <a href={`mailto:${site.contact.email}`} className="contact__big link-line">

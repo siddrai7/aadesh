@@ -80,3 +80,19 @@ export function Phone() {
     </svg>
   );
 }
+
+export function Expand() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5L9 7M2.5 13.5L7 9" stroke="currentColor" strokeWidth="1.4" />
+    </svg>
+  );
+}
+
+export function Close() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <path d="M3 3l12 12M15 3L3 15" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
