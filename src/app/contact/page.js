@@ -2,7 +2,7 @@ import Image from "next/image";
 import Mask from "@/components/Mask";
 import RevealObserver from "@/components/RevealObserver";
 import EnquiryForm from "./EnquiryForm";
-import { ArrowUpRight, Facebook, Instagram, Mail, Phone, WhatsApp } from "@/components/Icons";
+import { ArrowUpRight, Facebook, Instagram, LinkedIn, Mail, Phone, WhatsApp } from "@/components/Icons";
 import { site, telHref, whatsappLink } from "@/lib/site";
 import { portraits } from "@/lib/gallery";
 
@@ -14,6 +14,7 @@ export const metadata = {
 const channels = [
   { name: "WhatsApp", handle: site.contact.phone, href: whatsappLink(), Icon: WhatsApp, external: true },
   { name: "Instagram", handle: site.socials.instagramHandle, href: site.socials.instagram, Icon: Instagram, external: true },
+  { name: "LinkedIn", handle: site.socials.linkedinHandle, href: site.socials.linkedin, Icon: LinkedIn, external: true },
   { name: "Facebook", handle: site.socials.facebookHandle, href: site.socials.facebook, Icon: Facebook, external: true },
   { name: "Email", handle: site.contact.email, href: `mailto:${site.contact.email}`, Icon: Mail },
   { name: "Call", handle: site.contact.phone, href: telHref, Icon: Phone },

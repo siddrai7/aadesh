@@ -110,6 +110,7 @@ export default function Header() {
         </div>
         <div className="mobile-menu__foot">
           <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+          <a href={site.socials.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
           <a href={site.socials.instagram} target="_blank" rel="noreferrer">Instagram</a>
           <a href={site.socials.facebook} target="_blank" rel="noreferrer">Facebook</a>
         </div>

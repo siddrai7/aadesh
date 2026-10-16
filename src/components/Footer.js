@@ -38,6 +38,7 @@ export default function Footer() {
             <ul>
               <li><a href={`mailto:${site.contact.email}`}>Email</a></li>
               <li><a href={whatsappLink()} target="_blank" rel="noreferrer">WhatsApp</a></li>
+              <li><a href={site.socials.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></li>
               <li><a href={site.socials.instagram} target="_blank" rel="noreferrer">Instagram</a></li>
               <li><a href={site.socials.facebook} target="_blank" rel="noreferrer">Facebook</a></li>
             </ul>

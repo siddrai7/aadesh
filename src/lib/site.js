@@ -1,5 +1,4 @@
 // Central place for every editable detail on the site.
-// TODO: replace the placeholder contact details below with Aadesh's real ones.
 
 export const site = {
   name: "Aadesh Sharma",
@@ -13,10 +12,10 @@ export const site = {
   location: "India · Available worldwide",
 
   contact: {
-    email: "hello@aadeshsharma.com",
-    phone: "+91 98765 43210",
-    // Digits only, with country code — used for wa.me links.
-    whatsapp: "919876543210",
+    email: "aadesh.firekiller@gmail.com",
+    phone: "+91 81685 06755",
+    // Digits only, with country code — used for wa.me links (enquiries go here).
+    whatsapp: "918168506755",
   },
 
   socials: {
@@ -24,6 +23,8 @@ export const site = {
     instagramHandle: "@aadesh_1978",
     facebook: "https://www.facebook.com/aadeshkumarsharma",
     facebookHandle: "Aadesh Kumar Sharma",
+    linkedin: "https://www.linkedin.com/in/aadesh-sharma-45027b84",
+    linkedinHandle: "Aadesh Sharma",
   },
 };
 
