@@ -2802,3 +2802,34 @@ html:has(.lightbox[open]) {
     transform-origin: left;
   }
 }
+
+/* ---------- Video tiles ---------- */
+
+.gallery__video,
+.lightbox__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery__video {
+  object-fit: cover;
+}
+
+.lightbox__video {
+  object-fit: contain;
+  background: #000;
+}
+
+/* Videos get a solid ember play button so they read as playable at a glance */
+.gallery__zoom--play {
+  width: 52px;
+  height: 52px;
+  background: var(--ember);
+  color: #fff;
+}
+
+.gallery__zoom--play svg {
+  margin-left: 3px;
+}

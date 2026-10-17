@@ -6,7 +6,11 @@
 // Each gallery section only appears once it has at least one photo, so the
 // live site never shows empty placeholders. Tapping a photo opens it full size.
 //
-//   file     file name inside /public/images/gallery/          (required)
+//   file     file name inside /public/images/gallery/          (required for photos)
+//   video    a video instead of a photo, e.g. "/videos/clip.mp4" in /public/videos/,
+//            with `poster` set to a still image shown before it plays. It plays
+//            silently in the tile and with sound when tapped. Optional
+//            `preview: [start, end]` (seconds) loops just that part in the tile.
 //   alt      what the photo shows, for screen readers and Google (required)
 //   pages    where it appears: ["home"], ["about"] or ["home", "about"]
 //   caption  short line shown on the photo                       (optional)
@@ -19,12 +23,24 @@
 export const gallery = [
   // ---------- Home: Moments from the work ----------
   {
+    video: "/videos/award-ceremony.mp4",
+    poster: "/videos/award-ceremony-poster.jpg",
+    // The tile loops just the award moment; tapping plays the whole clip with sound.
+    preview: [11, 24],
+    alt: "Video: Aadesh Sharma receiving an award on stage at an anniversary celebration, with sparklers going off",
+    caption: "Recognition on stage",
+    tag: "Awards · Video",
+    focus: "50% 58%",
+    span: 4,
+    pages: ["home"],
+  },
+  {
     file: "leadership-development-program.jpg",
     alt: "Aadesh Sharma presenting on stage at a Leadership Development Program, with the audience in the foreground",
     caption: "Leadership Development Program",
     tag: "Corporate training",
     focus: "50% 40%",
-    span: 7,
+    span: 8,
     pages: ["home"],
   },
   {
@@ -37,21 +53,12 @@ export const gallery = [
     pages: ["home"],
   },
   {
-    file: "award-night.jpg",
-    alt: "Aadesh Sharma receiving recognition on stage at an evening event",
-    caption: "Recognition on stage",
-    tag: "Awards",
-    focus: "50% 50%",
-    span: 4,
-    pages: ["home"],
-  },
-  {
     file: "yuva-mahotsav-2021.jpg",
     alt: "Aadesh Sharma speaking with a microphone at Yuva Mahotsav 2021, a National Youth Day event in Prayagraj",
     caption: "Yuva Mahotsav 2021, Prayagraj",
     tag: "National Youth Day",
     focus: "62% 38%",
-    span: 8,
+    span: 7,
     pages: ["home"],
   },
   {
@@ -60,7 +67,7 @@ export const gallery = [
     caption: "Among the participants",
     tag: "People development",
     focus: "100% 50%",
-    span: 5,
+    span: 4,
     pages: ["home"],
   },
   {
@@ -69,7 +76,16 @@ export const gallery = [
     caption: "Workshop in session",
     tag: "Training",
     focus: "50% 60%",
-    span: 7,
+    span: 4,
+    pages: ["home"],
+  },
+  {
+    file: "speaking-session.jpg",
+    alt: "Aadesh Sharma speaking into a microphone during a session",
+    caption: "Speaking session",
+    tag: "Keynote",
+    focus: "0% 30%",
+    span: 4,
     pages: ["home"],
   },
 

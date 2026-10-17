@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowRight, Close, Expand } from "./Icons";
+import { ArrowRight, Close, Expand, Play } from "./Icons";
 
 // Desktop: 12-column rows that alternate wide/narrow tiles. Phones: a swipe row.
 const ROWS = [
@@ -20,9 +20,11 @@ function spanFor(photo, i, count) {
 
 const pad = (n) => String(n).padStart(2, "0");
 const srcOf = (photo) => `/images/gallery/${photo.file}`;
+const keyOf = (photo) => photo.file || photo.video;
 
 export default function Gallery({ photos }) {
   const dialogRef = useRef(null);
+  const listRef = useRef(null);
   const touchStartX = useRef(null);
   const [index, setIndex] = useState(null);
   const count = photos.length;
@@ -47,6 +49,35 @@ export default function Gallery({ photos }) {
     return () => dialog.removeEventListener("keydown", onKey);
   }, [count]);
 
+  // Video tiles play silently while on screen, and pause when scrolled away.
+  // With `preview: [start, end]` they loop just that part of the clip.
+  useEffect(() => {
+    const videos = [...(listRef.current?.querySelectorAll("video") ?? [])];
+    if (!videos.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const cleanups = videos.map((v) => {
+      const [start, end] = (v.dataset.preview || "").split(",").map(Number);
+      if (!end) return () => {};
+      const seekStart = () => (v.currentTime = start);
+      const wrap = () => v.currentTime >= end && seekStart();
+      v.addEventListener("loadedmetadata", seekStart, { once: true });
+      v.addEventListener("timeupdate", wrap);
+      return () => v.removeEventListener("timeupdate", wrap);
+    });
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach(({ target, isIntersecting }) => {
+          if (isIntersecting) target.play().catch(() => {});
+          else target.pause();
+        }),
+      { threshold: 0.4 }
+    );
+    videos.forEach((v) => io.observe(v));
+    return () => {
+      io.disconnect();
+      cleanups.forEach((fn) => fn());
+    };
+  }, []);
+
   const onTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -64,21 +95,36 @@ export default function Gallery({ photos }) {
           Swipe →
         </span>
       )}
-      <ul className={`gallery${single ? " gallery--single" : ""}`}>
+      <ul ref={listRef} className={`gallery${single ? " gallery--single" : ""}`}>
         {photos.map((p, i) => (
           <li
-            key={p.file}
+            key={keyOf(p)}
             className="gallery__item reveal"
             style={{ "--span": spanFor(p, i, count), "--d": `${(i % 2) * 0.08}s` }}
           >
             <figure>
-              <Image
-                src={srcOf(p)}
-                alt={p.alt}
-                fill
-                sizes="(min-width: 900px) 66vw, 90vw"
-                style={{ objectPosition: p.focus || "center" }}
-              />
+              {p.video ? (
+                <video
+                  className="gallery__video"
+                  src={p.video}
+                  poster={p.poster}
+                  data-preview={p.preview?.join(",")}
+                  muted
+                  loop
+                  playsInline
+                  preload="none"
+                  aria-hidden="true"
+                  style={{ objectPosition: p.focus || "center" }}
+                />
+              ) : (
+                <Image
+                  src={srcOf(p)}
+                  alt={p.alt}
+                  fill
+                  sizes="(min-width: 900px) 66vw, 90vw"
+                  style={{ objectPosition: p.focus || "center" }}
+                />
+              )}
               {(p.caption || p.tag) && (
                 <figcaption>
                   {p.tag && <span className="gallery__tag">{p.tag}</span>}
@@ -90,10 +136,10 @@ export default function Gallery({ photos }) {
               type="button"
               className="gallery__open"
               onClick={() => open(i)}
-              aria-label={`View photo full size${p.caption ? `: ${p.caption}` : ""}`}
+              aria-label={`${p.video ? "Play video with sound" : "View photo full size"}${p.caption ? `: ${p.caption}` : ""}`}
             >
-              <span className="gallery__zoom" aria-hidden="true">
-                <Expand />
+              <span className={`gallery__zoom${p.video ? " gallery__zoom--play" : ""}`} aria-hidden="true">
+                {p.video ? <Play /> : <Expand />}
               </span>
             </button>
           </li>
@@ -113,7 +159,20 @@ export default function Gallery({ photos }) {
             </div>
 
             <div className="lightbox__stage" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-              <Image key={current.file} src={srcOf(current)} alt={current.alt} fill sizes="100vw" />
+              {current.video ? (
+                <video
+                  key={current.video}
+                  className="lightbox__video"
+                  src={current.video}
+                  poster={current.poster}
+                  controls
+                  autoPlay
+                  playsInline
+                  aria-label={current.alt}
+                />
+              ) : (
+                <Image key={current.file} src={srcOf(current)} alt={current.alt} fill sizes="100vw" />
+              )}
             </div>
 
             <div className="lightbox__bottom">

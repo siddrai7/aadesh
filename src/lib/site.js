@@ -89,9 +89,9 @@ export const services = [
     title: "Corporate Training & People Development",
     short: "Corporate Training",
     image: {
-      src: "/images/services/speaking-session.jpg",
-      alt: "Aadesh Sharma speaking into a microphone during a session",
-      focus: "0% 30%",
+      src: "/images/services/training-session.jpg",
+      alt: "Aadesh Sharma leading a training session, with participants seated at round tables in a hotel ballroom",
+      focus: "100% 45%",
     },
     lede: "Programs that help people recognise — and unlock — their potential.",
     body: "Interactive training for teams and leaders. When people improve their mindset, skills and relationships, they unlock new levels of personal and professional growth.",
