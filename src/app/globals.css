@@ -2785,3 +2785,33 @@ html:has(.lightbox[open]) {
 .portrait__corner {
   z-index: 1;
 }
+
+/* ---------- Footer credit ---------- */
+
+.footer__credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+}
+
+.footer__credit .link-line {
+  color: var(--paper);
+}
+
+.footer__credit svg {
+  transition: transform 0.4s var(--ease);
+}
+
+@media (hover: hover) {
+  .footer__credit:hover {
+    color: var(--paper);
+  }
+  .footer__credit:hover svg {
+    transform: translate(2px, -2px);
+  }
+  .footer__credit:hover .link-line::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}

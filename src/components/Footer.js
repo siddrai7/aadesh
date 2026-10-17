@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { nav, services, site, whatsappLink } from "@/lib/site";
+import { ArrowUpRight } from "./Icons";
 
 export default function Footer() {
   return (
@@ -53,6 +54,11 @@ export default function Footer() {
           <span>© Aadesh Sharma. All rights reserved.</span>
           <span>{site.role}</span>
           <span>{site.location}</span>
+          {/* rel without noreferrer so Lancehawks can see visits that come from this site */}
+          <a href="https://www.lancehawks.com" target="_blank" rel="noopener" className="footer__credit">
+            Powered by <span className="link-line">Lancehawks</span>
+            <ArrowUpRight size={12} />
+          </a>
         </div>
       </div>
     </footer>
