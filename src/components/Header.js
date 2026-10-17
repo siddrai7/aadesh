@@ -55,7 +55,7 @@ export default function Header() {
       <header className={cls}>
         <div className="container header__inner">
           <Link href="/" className="brand" aria-label={`${site.name} — home`}>
-            Aadesh Sharma<span className="brand__mark">®</span>
+            Aadesh Sharma
           </Link>
 
           <nav className="nav" aria-label="Primary">

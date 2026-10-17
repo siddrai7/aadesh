@@ -427,13 +427,6 @@ html:not([data-reveal-ready]) .mask > span {
   line-height: 1;
 }
 
-.brand__mark {
-  font-family: var(--font-label);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  color: var(--muted);
-  transform: translateY(-3px);
-}
 
 .nav {
   display: flex;
@@ -521,9 +514,6 @@ html:not([data-reveal-ready]) .mask > span {
   color: var(--paper);
 }
 
-.header--light .brand__mark {
-  color: var(--on-dark-soft);
-}
 
 .header--light .menu-btn {
   border-color: var(--line-dark);
@@ -545,9 +535,6 @@ html:not([data-reveal-ready]) .mask > span {
   border-color: var(--line-dark);
 }
 
-.header--menu-open .brand__mark {
-  color: var(--on-dark-soft);
-}
 
 @media (max-width: 900px) {
   .nav {
