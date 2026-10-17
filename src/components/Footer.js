@@ -53,7 +53,6 @@ export default function Footer() {
         <div className="footer__bottom">
           <span>© Aadesh Sharma. All rights reserved.</span>
           <span>{site.role}</span>
-          <span>{site.location}</span>
           {/* rel without noreferrer so Lancehawks can see visits that come from this site */}
           <a href="https://www.lancehawks.com" target="_blank" rel="noopener" className="footer__credit">
             Powered by <span className="link-line">Lancehawks</span>
