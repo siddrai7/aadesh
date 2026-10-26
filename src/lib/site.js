@@ -8,8 +8,9 @@ export const site = {
   tagline: "I build people, partnerships & possibilities.",
   promise: "Transforming relationships into opportunities, ideas into businesses, and vision into growth.",
   portrait: "/images/aadesh-sharma.jpg",
-  url: "https://aadeshsharma.com",
-  location: "India · Available worldwide",
+  // The live address (aadeshsharma.com redirects here). Used for canonical links, the sitemap and previews.
+  url: "https://www.aadeshsharma.com",
+  location: "Gurgaon · Delhi · Noida",
 
   contact: {
     email: "aadesh.firekiller@gmail.com",
@@ -94,7 +95,7 @@ export const services = [
       focus: "100% 45%",
     },
     lede: "Programs that help people recognise — and unlock — their potential.",
-    body: "Interactive training for teams and leaders. When people improve their mindset, skills and relationships, they unlock new levels of personal and professional growth.",
+    body: "Interactive sales, leadership and communication training for corporate teams and leaders. When people improve their mindset, skills and relationships, they unlock new levels of personal and professional growth.",
     points: [
       "Leadership mindset",
       "Sales skills",

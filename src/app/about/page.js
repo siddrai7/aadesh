@@ -6,12 +6,9 @@ import CtaBand from "@/components/CtaBand";
 import Gallery from "@/components/Gallery";
 import { mission, philosophy, pillars, site, vision } from "@/lib/site";
 import { galleryFor, portraits } from "@/lib/gallery";
+import { pageMetadata, pages } from "@/lib/seo";
 
-export const metadata = {
-  title: "About",
-  description:
-    "Aadesh Sharma — entrepreneur, real estate strategist and corporate trainer with over two decades across sales, marketing, business development, real estate and franchise development.",
-};
+export const metadata = pageMetadata(pages.about);
 
 const fields = [
   {

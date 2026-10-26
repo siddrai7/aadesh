@@ -9,6 +9,9 @@ import Portrait from "@/components/Portrait";
 import { ArrowRight, ArrowUpRight } from "@/components/Icons";
 import { philosophy, pillars, services, site } from "@/lib/site";
 import { galleryFor, portraits } from "@/lib/gallery";
+import { pageMetadata, pages } from "@/lib/seo";
+
+export const metadata = pageMetadata(pages.home);
 
 const stats = [
   { num: "20", sup: "+", label: "Years of professional experience" },
@@ -102,7 +105,8 @@ export default function Home() {
               <p>
                 For more than two decades I’ve worked across sales, marketing, business development, insurance, network
                 marketing, real estate and franchise development — learning how to connect the right people with the
-                right opportunities.
+                right opportunities. Today I work with developers, businesses and corporate teams across Gurgaon, Delhi
+                and Noida.
               </p>
               <p>
                 Success isn’t just about making money. It’s about creating value, building meaningful relationships,

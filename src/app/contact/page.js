@@ -5,11 +5,9 @@ import EnquiryForm from "./EnquiryForm";
 import { ArrowUpRight, Facebook, Instagram, LinkedIn, Mail, Phone, WhatsApp } from "@/components/Icons";
 import { site, telHref, whatsappLink } from "@/lib/site";
 import { portraits } from "@/lib/gallery";
+import { pageMetadata, pages } from "@/lib/seo";
 
-export const metadata = {
-  title: "Contact",
-  description: "Connect with Aadesh Sharma about real estate consulting, business partnerships and corporate training.",
-};
+export const metadata = pageMetadata(pages.contact);
 
 const channels = [
   { name: "WhatsApp", handle: site.contact.phone, href: whatsappLink(), Icon: WhatsApp, external: true },
@@ -79,7 +77,7 @@ export default function Contact() {
               </a>
             </div>
             <div className="contact__block reveal" style={{ "--d": "0.1s" }}>
-              <span className="label">Based in</span>
+              <span className="label">Working across</span>
               <span className="contact__big">{site.location}</span>
             </div>
 

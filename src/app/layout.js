@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileBar from "@/components/MobileBar";
 import { site } from "@/lib/site";
+import { keywords, ogImage, pages, structuredData } from "@/lib/seo";
 import "./globals.css";
 
 const serif = Instrument_Serif({
@@ -25,22 +26,24 @@ const mono = JetBrains_Mono({
 
 export const metadata = {
   metadataBase: new URL(site.url),
+  // Each page sets its own title, description, canonical link and preview (see src/lib/seo.js).
   title: {
-    default: `${site.name} — ${site.role}`,
+    default: pages.home.title,
     template: `%s — ${site.name}`,
   },
-  description:
-    "Aadesh Sharma is a real estate strategist, entrepreneur and corporate trainer with 20+ years across sales, marketing, business development and real estate. I build people, partnerships & possibilities.",
+  description: pages.home.description,
+  keywords,
+  authors: [{ name: site.name, url: site.url }],
   appleWebApp: { title: "Aadesh", statusBarStyle: "default" },
   formatDetection: { telephone: false },
   openGraph: {
-    title: `${site.name} — ${site.role}`,
-    description: `${site.tagline} ${site.promise}`,
-    url: site.url,
+    title: pages.home.title,
+    description: pages.home.description,
     siteName: site.name,
+    locale: "en_IN",
     type: "website",
     // Shown in WhatsApp / social link previews.
-    images: [{ url: site.portrait, width: 1121, height: 1403, alt: site.name }],
+    images: [ogImage],
   },
 };
 
@@ -51,8 +54,13 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang="en-IN" data-scroll-behavior="smooth" className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
       <body>
+        {/* Tells Google who Aadesh is, what he offers and where (see src/lib/seo.js). */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
+        />
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}.mask>span{transform:none!important}`}</style>
         </noscript>

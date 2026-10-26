@@ -5,12 +5,9 @@ import RevealObserver from "@/components/RevealObserver";
 import CtaBand from "@/components/CtaBand";
 import { ArrowRight } from "@/components/Icons";
 import { services } from "@/lib/site";
+import { pageMetadata, pages } from "@/lib/seo";
 
-export const metadata = {
-  title: "Services",
-  description:
-    "Real estate strategy & consulting, entrepreneurship & business growth, corporate training and strategic networking with Aadesh Sharma.",
-};
+export const metadata = pageMetadata(pages.services);
 
 const formats = [
   { t: "Consulting", b: "One-on-one strategy for developers, investors, brokers and business owners, focused on your project and your market." },
@@ -22,6 +19,10 @@ const faqs = [
   {
     q: "Who do you typically work with?",
     a: "Real estate developers, channel partners, brokers, investors, entrepreneurs, business associates and corporate teams: anyone looking to grow through the right strategy, relationships and people.",
+  },
+  {
+    q: "Where do you work?",
+    a: "Across Delhi NCR: Gurgaon, Delhi and Noida, in person or online. Training programs and consulting elsewhere in India are welcome too.",
   },
   {
     q: "Do you work with developers and channel partners on projects?",
@@ -51,8 +52,8 @@ export default function Services() {
           <div className="page-hero__foot">
             <span className="label reveal">(Offering)</span>
             <p className="lede reveal" style={{ "--d": "0.2s" }}>
-              Four areas of work, one approach: connect the right people, find the right opportunities and build
-              relationships that create long-term value.
+              Four areas of work for businesses and teams across Gurgaon, Delhi and Noida, with one approach: connect
+              the right people, find the right opportunities and build relationships that create long-term value.
             </p>
           </div>
         </div>
