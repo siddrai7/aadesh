@@ -843,9 +843,10 @@ html:not([data-reveal-ready]) .mask > span {
 }
 
 .marquee__star {
-  /* Explicit square size: iOS Safari drops `height: auto` SVGs from the group's width */
   width: clamp(18px, 2vw, 28px);
   height: clamp(18px, 2vw, 28px);
+  /* Without min-width, Safari leaves the SVG out of the group's width and the next group overlaps the last star */
+  min-width: clamp(18px, 2vw, 28px);
   color: var(--gold);
   flex: none;
 }
